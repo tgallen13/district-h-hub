@@ -12,7 +12,7 @@ Every push to `main` deploys to production automatically.
   admin has added can get in.
 - **Interns** see their open week, mark lessons done, submit homework and
   filmed-rep links, and read their coach's sign-off notes. Weeks unlock in order.
-- **Candidates** see orientation and their Professional Path Call.
+- **Candidates** see orientation.
 - **Coaches** see every intern, who's waiting on a sign-off, and each intern's
   submissions. Signing off a week unlocks the next one. The latest sign-off can
   be undone.

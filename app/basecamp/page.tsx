@@ -18,16 +18,9 @@ export default async function BaseCampPage({ searchParams }: { searchParams: Pro
           <h1 className="h1">Welcome to BaseCamp{me.full_name ? `, ${me.full_name.split(' ')[0]}` : ''}</h1>
           <p className="lede" style={{ fontSize: 17 }}>
             This is a paid apprenticeship on a real floor, not a course. Start with orientation so you know who we are and what we commit to you.
-            Then book your Professional Path Call.
           </p>
         </div>
         <Orientation userId={me.id} role={me.role} />
-        <section className="card dark">
-          <h2 style={{ fontSize: 22 }}>Your Professional Path Call</h2>
-          <p style={{ margin: 0, fontSize: 15, lineHeight: 1.5 }}>
-            A conversation about your why, where you want this career to go, and whether BaseCamp is the right fit. Your General Manager will reach out to schedule it.
-          </p>
-        </section>
       </Shell>
     );
   }
