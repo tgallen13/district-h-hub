@@ -1,6 +1,7 @@
 import 'server-only';
 import { createClient } from '@/lib/supabase/server';
 import type { Progress, Task } from '@/lib/basecamp';
+import { loadQuizzes } from '@/lib/quiz';
 
 // My Path: Trainer (units 1-6, one per month) and Coach (units 7-14, one per
 // quarter). The database decides who is on the path and what is unlocked.
@@ -59,6 +60,7 @@ export async function loadPath(userId: string, unitN: number | null) {
   const { data: progress } = taskList.length
     ? await supabase.from('path_progress').select('task_id, submission, completed_at').eq('user_id', userId).in('task_id', taskList.map((t) => t.id))
     : { data: [] };
+  const quizzes = await loadQuizzes('path', taskList.map((t) => t.id), userId);
 
   return {
     units: (units ?? []) as Unit[],
@@ -68,5 +70,6 @@ export async function loadPath(userId: string, unitN: number | null) {
     selected,
     tasks: taskList as Task[],
     progress: new Map(((progress ?? []) as Progress[]).map((p) => [p.task_id, p])),
+    quizzes,
   };
 }

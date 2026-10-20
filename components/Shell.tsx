@@ -9,6 +9,7 @@ function navFor(profile: Profile): NavItem[] {
     case 'admin':
       return [
         { href: '/coach', label: 'Development' },
+        { href: '/coach/reflections', label: 'Reflections' },
         { href: '/admin', label: 'People' },
         { href: '/admin/weeks', label: 'BaseCamp weeks' },
         { href: '/admin/path', label: 'My Path units' },
@@ -19,6 +20,7 @@ function navFor(profile: Profile): NavItem[] {
       return [
         { href: '/path', label: 'My Path' },
         { href: '/coach', label: 'Development' },
+        { href: '/coach/reflections', label: 'Reflections' },
         { href: '/playbooks', label: 'Playbooks' },
       ];
     case 'intern':

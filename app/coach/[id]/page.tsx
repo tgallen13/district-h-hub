@@ -5,6 +5,7 @@ import TaskList from '@/components/TaskList';
 import WeekGrid from '@/components/WeekGrid';
 import { requireRole, type Profile } from '@/lib/auth';
 import { createClient } from '@/lib/supabase/server';
+import { loadQuizzes } from '@/lib/quiz';
 import { finished, openWeekFrom, TOTAL_WEEKS, type Progress, type Signoff, type Task, type Week } from '@/lib/basecamp';
 import { signOff, undoSignoff } from '../actions';
 
@@ -45,6 +46,7 @@ export default async function InternDetail({
     ? await supabase.from('task_progress').select('task_id, submission, completed_at').eq('user_id', id).in('task_id', taskList.map((t) => t.id))
     : { data: [] };
   const prog = new Map(((progress ?? []) as Progress[]).map((x) => [x.task_id, x]));
+  const quizzes = await loadQuizzes('basecamp', taskList.map((t) => t.id), id);
   const doneCount = taskList.filter((t) => prog.has(t.id)).length;
 
   let signer = '';
@@ -65,7 +67,7 @@ export default async function InternDetail({
           </div>
         ) : null}
       </div>
-      {e === 'signoff' ? <div className="warn" role="alert">That sign-off didn&rsquo;t save. Someone may have signed off this week already. Refresh and check.</div> : null}
+      {e === 'signoff' ? <div className="warn" role="alert">That sign-off didn&rsquo;t save. Every lesson check in the week has to be passed first, or someone may have signed it off already. Refresh and check.</div> : null}
 
       <div className="row">
         <section className="card" style={{ flex: '1 1 280px', gap: 10 }}>
@@ -81,7 +83,7 @@ export default async function InternDetail({
               <h3 style={{ fontSize: 17 }}>Their work</h3>
               <span className="sub">{doneCount} of {taskList.length} done</span>
             </div>
-            <TaskList tasks={taskList} progress={prog} editable={false} />
+            <TaskList tasks={taskList} progress={prog} editable={false} quizzes={quizzes} />
           </div>
 
           {signoff ? (

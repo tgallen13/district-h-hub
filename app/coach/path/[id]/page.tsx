@@ -5,6 +5,7 @@ import TaskList from '@/components/TaskList';
 import UnitGrid from '@/components/UnitGrid';
 import { requireRole, type Profile } from '@/lib/auth';
 import { createClient } from '@/lib/supabase/server';
+import { loadQuizzes } from '@/lib/quiz';
 import { isOnPath, loadPath, TOTAL_UNITS, unitLabel } from '@/lib/path';
 import { signOffUnit, undoUnitSignoff } from '@/app/path/actions';
 
@@ -36,6 +37,7 @@ export default async function CoachPathDetail({
   const latest = so.length ? Math.max(...so.map((s) => s.unit_n)) : 0;
   const taskList = d.tasks;
   const prog = d.progress;
+  const quizzes = await loadQuizzes('path', taskList.map((t) => t.id), id);
   const doneCount = taskList.filter((t) => prog.has(t.id)).length;
   // Mentors can sign off a unit they've finished themselves; admins can sign off any.
   const { data: mine } = await supabase.from('path_signoffs').select('unit_n').eq('user_id', me.id).eq('unit_n', selected).maybeSingle();
@@ -54,7 +56,7 @@ export default async function CoachPathDetail({
         <h1 className="h1">{p.full_name || p.email}</h1>
         <p className="lede">{done ? 'Finished the Trainer and Coach path.' : `${open <= 6 ? 'Trainer' : 'Coach'} · ${unitLabel(open)}`}</p>
       </div>
-      {e === 'signoff' ? <div className="warn" role="alert">That sign-off didn&rsquo;t save. You may not have finished this unit yourself yet, or someone signed it off already. Refresh and check.</div> : null}
+      {e === 'signoff' ? <div className="warn" role="alert">That sign-off didn&rsquo;t save. Every lesson check in the unit has to be passed first. You may also not have finished this unit yourself yet, or someone signed it off already. Refresh and check.</div> : null}
 
       <div className="row">
         <section className="card" style={{ flex: '1 1 280px', gap: 10 }}>
@@ -70,7 +72,7 @@ export default async function CoachPathDetail({
               <h3 style={{ fontSize: 17 }}>Their work</h3>
               <span className="sub">{doneCount} of {taskList.length} done</span>
             </div>
-            <TaskList tasks={taskList} progress={prog} editable={false} />
+            <TaskList tasks={taskList} progress={prog} editable={false} quizzes={quizzes} />
           </div>
 
           {signoff ? (

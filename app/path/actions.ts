@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { requireRole } from '@/lib/auth';
 import { TOTAL_UNITS } from '@/lib/path';
+import { answersFrom } from '@/lib/quiz';
 
 // Row-level security decides who is on the path, which unit is open, and who
 // may sign off, so these actions stay thin.
@@ -26,6 +27,14 @@ export async function submitPathTask(formData: FormData) {
   const supabase = await createClient();
   if (!submission) await supabase.from('path_progress').delete().eq('user_id', me.id).eq('task_id', taskId);
   else await supabase.from('path_progress').upsert({ user_id: me.id, task_id: taskId, submission, completed_at: new Date().toISOString() });
+  revalidatePath('/path');
+}
+
+export async function submitPathQuiz(formData: FormData) {
+  await requireRole(['coach']);
+  const taskId = String(formData.get('taskId'));
+  const supabase = await createClient();
+  await supabase.rpc('submit_quiz', { t_id: null, p_id: taskId, answers: answersFrom(formData) });
   revalidatePath('/path');
 }
 

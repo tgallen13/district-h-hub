@@ -4,7 +4,7 @@ import TaskList from '@/components/TaskList';
 import UnitGrid from '@/components/UnitGrid';
 import { requireRole } from '@/lib/auth';
 import { isOnPath, loadPath, TOTAL_UNITS, TRAINER_UNITS, unitLabel } from '@/lib/path';
-import { submitPathTask, togglePathTask } from './actions';
+import { submitPathQuiz, submitPathTask, togglePathTask } from './actions';
 
 export const metadata = { title: 'My Path' };
 
@@ -79,7 +79,7 @@ export default async function MyPath({ searchParams }: { searchParams: Promise<{
               <h3 style={{ fontSize: 18 }}>The work</h3>
               <span className="sub">{doneCount} of {d.tasks.length} done</span>
             </div>
-            <TaskList tasks={d.tasks} progress={d.progress} editable={isOpen} toggle={togglePathTask} submit={submitPathTask} />
+            <TaskList tasks={d.tasks} progress={d.progress} editable={isOpen} toggle={togglePathTask} submit={submitPathTask} quizzes={d.quizzes} quiz={submitPathQuiz} />
             {isOpen && d.tasks.length > 0 && doneCount === d.tasks.length ? (
               <div className="note">All done. Your mentor or GM will review and sign off to unlock the next unit.</div>
             ) : null}

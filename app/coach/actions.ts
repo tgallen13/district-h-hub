@@ -30,3 +30,16 @@ export async function undoSignoff(formData: FormData) {
   revalidatePath(`/coach/${internId}`);
   redirect(`/coach/${internId}?week=${weekN}`);
 }
+
+// Leadership's weekly read of reflections: mark reviewed (or reopen) with an
+// optional note the learner sees under their answer.
+export async function reviewReflection(formData: FormData) {
+  await requireRole(['admin', 'coach']);
+  const learner = String(formData.get('userId'));
+  const questionId = String(formData.get('questionId'));
+  const note = String(formData.get('note') ?? '').trim().slice(0, 2000);
+  const done = formData.get('done') !== '0';
+  const supabase = await createClient();
+  await supabase.rpc('review_reflection', { learner, q_id: questionId, note, done });
+  revalidatePath('/coach/reflections');
+}

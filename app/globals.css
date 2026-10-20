@@ -123,3 +123,21 @@ label { font-size: 14px; font-weight: 600; }
 .lesson h4 { font-family: var(--font-display); font-size: 17px; margin-top: 18px; }
 .lesson ul, .lesson ol { padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
 @media (max-width: 600px) { .lesson { padding: 14px 14px; font-size: 15px; } }
+
+/* End-of-lesson check */
+.quiz { margin-top: 4px; display: flex; flex-direction: column; gap: 12px; padding: 14px 16px; border: 1px solid var(--line2); border-radius: 10px; background: #FBFAF7; }
+details.quiz { display: block; }
+details.quiz > summary::-webkit-details-marker { display: none; }
+.quiz-head { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
+.quiz-q { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.quiz-q legend { font-weight: 600; font-size: 15px; line-height: 1.4; margin-bottom: 8px; padding: 0; }
+.quiz-q.wrong { border-left: 3px solid var(--orange); padding-left: 12px; }
+.quiz-n { color: var(--muted); }
+.quiz-tag { display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 999px; background: #FFF1DE; color: #8A4B00; font-size: 12px; font-weight: 600; vertical-align: middle; }
+.quiz-choice { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer; line-height: 1.4; }
+.quiz-choice:has(input:checked) { border-color: var(--blue); background: var(--accent-tint); }
+.quiz-choice input { margin-top: 3px; flex: none; width: 18px; height: 18px; }
+.quiz-choice b { color: var(--muted); margin-right: 4px; }
+.quiz-flag { margin: 0; padding: 10px 12px; border-radius: 8px; background: #FFF1DE; color: #6B3A00; font-size: 14px; }
+.quiz-answer { margin: 0; white-space: pre-wrap; color: var(--ink); font-size: 14px; line-height: 1.5; }
+.quiz-note { margin: 0; padding: 10px 12px; border-radius: 8px; background: var(--accent-tint); color: var(--accent-ink); font-size: 14px; line-height: 1.5; }

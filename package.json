@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test:db": "node supabase/tests/rls.test.mjs supabase/migrations/0001_basecamp.sql && node supabase/tests/path.test.mjs && node supabase/tests/playbooks.test.mjs",
+    "test:db": "node supabase/tests/rls.test.mjs supabase/migrations/0001_basecamp.sql && node supabase/tests/path.test.mjs && node supabase/tests/playbooks.test.mjs && node supabase/tests/quiz.test.mjs",
     "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {

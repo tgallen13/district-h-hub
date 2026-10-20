@@ -1,6 +1,8 @@
 import { NEEDS_SUBMISSION, type Progress, type Task } from '@/lib/basecamp';
 import { isHttpUrl } from '@/lib/validate';
 import Lesson from './Lesson';
+import Quiz from './Quiz';
+import type { QuizState } from '@/lib/quiz';
 
 const LABELS: Record<Task['kind'], { open: string; hint: string }> = {
   lesson: { open: 'Mark done', hint: 'Daily lesson' },
@@ -23,12 +25,16 @@ export default function TaskList({
   editable,
   toggle,
   submit,
+  quizzes,
+  quiz,
 }: {
   tasks: Task[];
   progress: Map<string, Progress>;
   editable: boolean;
   toggle?: Action;
   submit?: Action;
+  quizzes?: Map<string, QuizState>;
+  quiz?: Action;
 }) {
   if (!tasks.length) return <p className="sub">No work has been added here yet.</p>;
   return (
@@ -36,6 +42,7 @@ export default function TaskList({
       {tasks.map((t) => {
         const p = progress.get(t.id);
         const needsText = NEEDS_SUBMISSION.includes(t.kind);
+        const qz = quizzes?.get(t.id);
         return (
           <div className="item" key={t.id}>
             <div className="grow">
@@ -55,9 +62,9 @@ export default function TaskList({
                 )
               ) : null}
             </div>
-            {!editable ? (
+            {!editable || (qz && p) ? (
               p ? <span className="badge">Done</span> : <span className="badge grey">Not done</span>
-            ) : needsText ? (
+            ) : qz ? null : needsText ? (
               <details style={{ flex: '1 1 100%' }} open={!p}>
                 <summary className={`btn${p ? ' done' : ''}`} style={{ listStyle: 'none', display: 'inline-flex' }}>
                   {p ? 'Submitted · edit' : LABELS[t.kind].open}
@@ -87,6 +94,11 @@ export default function TaskList({
                 </button>
               </form>
             )}
+            {qz ? (
+              <div style={{ flex: '1 1 100%', minWidth: 0 }}>
+                <Quiz taskId={t.id} quiz={qz} editable={editable && !p} action={quiz} />
+              </div>
+            ) : null}
           </div>
         );
       })}

@@ -3,7 +3,7 @@ import TaskList from '@/components/TaskList';
 import WeekGrid from '@/components/WeekGrid';
 import Orientation from '@/components/Orientation';
 import { requireRole } from '@/lib/auth';
-import { submitTask, toggleTask } from './actions';
+import { submitQuiz, submitTask, toggleTask } from './actions';
 import { gateFor, loadIntern, readingFor, TOTAL_WEEKS } from '@/lib/basecamp';
 
 export const metadata = { title: 'BaseCamp' };
@@ -86,7 +86,7 @@ export default async function BaseCampPage({ searchParams }: { searchParams: Pro
               <h3 style={{ fontSize: 18 }}>{isOpen ? 'This week’s work' : 'Your work this week'}</h3>
               <span className="sub">{doneCount} of {d.tasks.length} done</span>
             </div>
-            <TaskList tasks={d.tasks} progress={d.progress} editable={isOpen} toggle={toggleTask} submit={submitTask} />
+            <TaskList tasks={d.tasks} progress={d.progress} editable={isOpen} toggle={toggleTask} submit={submitTask} quizzes={d.quizzes} quiz={submitQuiz} />
             {isOpen && d.tasks.length > 0 && doneCount === d.tasks.length ? (
               <div className="note">All done. Your coach will review and sign off to unlock the next week.</div>
             ) : null}

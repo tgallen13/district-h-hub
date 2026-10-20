@@ -1,5 +1,6 @@
 import 'server-only';
 import { createClient } from '@/lib/supabase/server';
+import { loadQuizzes } from '@/lib/quiz';
 
 export type Week = { n: number; phase: string; title: string; system_focus: string; summary: string; is_gate: boolean };
 export type TaskKind = 'lesson' | 'film' | 'homework' | 'huddle';
@@ -50,6 +51,7 @@ export async function loadIntern(userId: string, weekN: number | null) {
   const { data: progress } = taskList.length
     ? await supabase.from('task_progress').select('task_id, submission, completed_at').eq('user_id', userId).in('task_id', taskList.map((t) => t.id))
     : { data: [] };
+  const quizzes = await loadQuizzes('basecamp', taskList.map((t) => t.id), userId);
 
   return {
     weeks: (weeks ?? []) as Week[],
@@ -59,5 +61,6 @@ export async function loadIntern(userId: string, weekN: number | null) {
     selected,
     tasks: taskList,
     progress: new Map(((progress ?? []) as Progress[]).map((p) => [p.task_id, p])),
+    quizzes,
   };
 }

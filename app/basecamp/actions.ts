@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { createClient } from '@/lib/supabase/server';
 import { requireRole } from '@/lib/auth';
+import { answersFrom } from '@/lib/quiz';
 
 // Row-level security enforces that interns can only touch tasks in their open
 // week, so these actions stay thin.
@@ -45,4 +46,14 @@ export async function toggleModule(formData: FormData) {
   }
   revalidatePath('/basecamp');
   revalidatePath('/basecamp/orientation');
+}
+
+// Grading happens in the database (submit_quiz), which also marks the lesson
+// done on a pass. The page reads the latest attempt back to show the result.
+export async function submitQuiz(formData: FormData) {
+  await requireRole(['intern']);
+  const taskId = String(formData.get('taskId'));
+  const supabase = await createClient();
+  await supabase.rpc('submit_quiz', { t_id: taskId, p_id: null, answers: answersFrom(formData) });
+  revalidatePath('/basecamp');
 }
