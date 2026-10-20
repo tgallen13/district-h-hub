@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Profile } from '@/lib/auth';
+import { LOGO_URL } from '@/lib/brand';
 
 type NavItem = { href: string; label: string };
 
@@ -29,9 +30,12 @@ export default function Shell({ profile, active, children }: { profile: Profile;
   return (
     <div className="shell">
       <nav className={`side${learner ? ' blue' : ''}`} aria-label="Coach Hub">
-        <div className="brand">
-          <div className="mark">H</div>
-          {learner ? 'BaseCamp' : 'Coach Hub'}
+        <div className="stack" style={{ gap: 6, padding: '0 8px' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="logo" src={LOGO_URL} alt="District H" width={132} height={84} />
+          <div className="brand" style={{ fontSize: 15, letterSpacing: '.06em', textTransform: 'uppercase' }}>
+            {learner ? 'BaseCamp' : 'Coach Hub'}
+          </div>
         </div>
         <div className="nav">
           {navFor(profile).map((item) => (

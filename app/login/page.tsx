@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getViewer, homeFor } from '@/lib/auth';
 import LoginForm from './LoginForm';
+import { LOGO_URL } from '@/lib/brand';
 
 const NOTICES: Record<string, string> = {
   expired: 'That link expired or was already used. Ask for a new one below.',
@@ -15,14 +16,12 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   return (
     <div className="login">
       <div className="login-left">
-        <div className="brand">
-          <div className="mark mark-lg">H</div>
-          <span className="brand-word">District H</span>
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="logo" src={LOGO_URL} alt="District H, established 2012" width={220} height={140} />
         <div className="stack" style={{ maxWidth: 440, gap: 20 }}>
-          <h1 className="display">Coach Hub</h1>
+          <h1 className="display">BaseCamp</h1>
           <p className="login-lede">
-            BaseCamp, your weekly work, and your path as a coach. Sign in with the email District H has on file for you.
+            The District H coaching apprenticeship. Your weekly work, your coach’s notes, and your path, all in one place.
           </p>
         </div>
         <div className="muted-dark">Real Training. Better Living.</div>

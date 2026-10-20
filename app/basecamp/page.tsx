@@ -94,12 +94,12 @@ export default async function BaseCampPage({ searchParams }: { searchParams: Pro
           <div className="row" style={{ gap: 16 }}>
             <div className="card dark" style={{ flex: '1 1 240px', padding: 20, gap: 8 }}>
               <div className="eyebrow">Next gate</div>
-              <div style={{ fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: 20 }}>{gate.title}</div>
+              <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20 }}>{gate.title}</div>
               <div className="sub">{gate.body}</div>
             </div>
             <div className="card" style={{ flex: '1 1 240px', padding: 20, gap: 8 }}>
               <div className="eyebrow">Phase reading</div>
-              <div style={{ fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: 20 }}>{book.title}</div>
+              <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20 }}>{book.title}</div>
               <div className="sub">{book.line}</div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import { LOGO_URL } from '@/lib/brand';
 
 export const metadata: Metadata = {
   title: { default: 'District H Coach Hub', template: '%s · District H Coach Hub' },
@@ -15,10 +16,11 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="icon" href={LOGO_URL} />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
         />
       </head>
       <body>{children}</body>
