@@ -35,6 +35,10 @@ function ModuleFields({ m, nextSort }: { m?: Module; nextSort: number }) {
         <label htmlFor={`v-${key}`}>Video link (optional)</label>
         <input id={`v-${key}`} name="video_url" type="url" className="input" defaultValue={m?.video_url ?? ''} placeholder="https://" />
       </div>
+      <label style={{ display: 'flex', gap: 8, alignItems: 'center', fontSize: 14 }}>
+        <input type="checkbox" name="interns_only" defaultChecked={m?.interns_only ?? false} />
+        Interns only (hidden from candidates)
+      </label>
     </>
   );
 }

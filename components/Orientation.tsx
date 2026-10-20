@@ -3,13 +3,14 @@ import { createClient } from '@/lib/supabase/server';
 import type { Module } from '@/lib/basecamp';
 import Lesson from './Lesson';
 
-export default async function Orientation({ userId }: { userId: string }) {
+export default async function Orientation({ userId, role }: { userId: string; role: string }) {
   const supabase = await createClient();
   const [{ data: mods }, { data: prog }] = await Promise.all([
     supabase.from('orientation_modules').select('*').order('sort'),
     supabase.from('orientation_progress').select('module_id').eq('user_id', userId),
   ]);
-  const modules = (mods ?? []) as Module[];
+  // Candidates aren't hired yet, so they don't see intern-only setup sections.
+  const modules = ((mods ?? []) as Module[]).filter((m) => role !== 'candidate' || !m.interns_only);
   const done = new Set((prog ?? []).map((p: { module_id: string }) => p.module_id));
 
   return (

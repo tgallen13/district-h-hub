@@ -6,7 +6,7 @@ export type TaskKind = 'lesson' | 'film' | 'homework' | 'huddle';
 export type Task = { id: string; week_n: number; sort: number; kind: TaskKind; title: string; details: string; body: string };
 export type Progress = { task_id: string; submission: string; completed_at: string };
 export type Signoff = { week_n: number; note: string; signed_at: string; signed_by: string };
-export type Module = { id: string; sort: number; title: string; summary: string; body: string; video_url: string };
+export type Module = { id: string; sort: number; title: string; summary: string; body: string; video_url: string; interns_only: boolean };
 
 export const TOTAL_WEEKS = 24;
 export const NEEDS_SUBMISSION: TaskKind[] = ['film', 'homework'];

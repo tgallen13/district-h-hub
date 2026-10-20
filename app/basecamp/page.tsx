@@ -20,7 +20,7 @@ export default async function BaseCampPage({ searchParams }: { searchParams: Pro
             Then book your Professional Path Call.
           </p>
         </div>
-        <Orientation userId={me.id} />
+        <Orientation userId={me.id} role={me.role} />
         <section className="card dark">
           <h2 style={{ fontSize: 22 }}>Your Professional Path Call</h2>
           <p style={{ margin: 0, fontSize: 15, lineHeight: 1.5 }}>

@@ -12,7 +12,7 @@ export default async function OrientationPage() {
         <h1 className="h1">Orientation</h1>
         <p className="lede">Who we are, how the gym works, and what we commit to you. Come back to it anytime.</p>
       </div>
-      <Orientation userId={me.id} />
+      <Orientation userId={me.id} role={me.role} />
     </Shell>
   );
 }

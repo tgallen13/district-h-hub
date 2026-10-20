@@ -144,7 +144,8 @@ export async function saveModule(formData: FormData) {
   const row = {
     title: clean(formData.get('title'), 200) || 'Untitled',
     summary: clean(formData.get('summary'), 300),
-    body: clean(formData.get('body'), 8000),
+    body: clean(formData.get('body'), 20000),
+    interns_only: formData.get('interns_only') === 'on',
     video_url: isHttpUrl(video) ? video : '',
     sort: Number(formData.get('sort')) || 0,
   };
