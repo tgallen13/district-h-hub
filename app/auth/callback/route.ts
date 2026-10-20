@@ -2,9 +2,9 @@ import { NextResponse, type NextRequest } from 'next/server';
 import type { EmailOtpType } from '@supabase/supabase-js';
 import { createClient } from '@/lib/supabase/server';
 
-// Where the emailed sign-in link lands. Handles both link styles Supabase can send:
-// a token_hash link (works in any browser, recommended) and a PKCE code link
-// (works only in the browser that asked for it).
+// Server-side half of sign-in links. Handles the two link styles that carry the
+// token in the query string: token_hash (any browser) and a PKCE code (only the
+// browser that asked for it). Links with the token in the URL hash go to /auth/confirm.
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
   const tokenHash = searchParams.get('token_hash');

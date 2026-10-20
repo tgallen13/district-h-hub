@@ -12,7 +12,7 @@ export default function LoginForm({ notice }: { notice?: string }) {
     return (
       <div className="stack">
         <div className="note" role="status">{state.message}</div>
-        <p className="sub">The link works once and expires after an hour. No email after a few minutes? Check spam, or ask your General Manager to confirm you&rsquo;ve been invited.</p>
+        <p className="sub">The link works once and expires after an hour. It’s fine to open it from your phone’s mail app. No email after a few minutes? Check spam, or ask your General Manager to confirm you&rsquo;ve been invited.</p>
       </div>
     );
   }

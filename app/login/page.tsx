@@ -4,7 +4,7 @@ import LoginForm from './LoginForm';
 
 const NOTICES: Record<string, string> = {
   expired: 'That link expired or was already used. Ask for a new one below.',
-  device: 'That link was opened in a different browser than the one that asked for it. Ask for a new link and open it on this device.',
+  device: 'That link was opened in a different browser than the one that asked for it. Ask for a new link below.',
 };
 
 export default async function LoginPage({ searchParams }: { searchParams: Promise<{ e?: string }> }) {

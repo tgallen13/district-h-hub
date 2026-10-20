@@ -1,8 +1,8 @@
 'use server';
 
 import { headers } from 'next/headers';
-import { createClient } from '@/lib/supabase/server';
-import { adminEmails } from '@/lib/env';
+import { createClient as createPlainClient } from '@supabase/supabase-js';
+import { adminEmails, supabasePublicKey, supabaseUrl } from '@/lib/env';
 import { isEmail } from '@/lib/validate';
 
 export type LoginState = { status: 'idle' | 'sent' | 'error'; message: string };
@@ -20,7 +20,11 @@ export async function sendLink(_prev: LoginState, formData: FormData): Promise<L
     return { status: 'error', message: 'That email doesn’t look right. Check it and try again.' };
   }
 
-  const supabase = await createClient();
+  // Implicit-flow links carry the session in the URL hash, so they work even when
+  // opened in a different browser (a phone's mail app) than the one that asked.
+  const supabase = createPlainClient(supabaseUrl(), supabasePublicKey(), {
+    auth: { flowType: 'implicit', persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+  });
   // Only owners in ADMIN_EMAILS can create an account by signing in.
   // Everyone else must be invited first, so unknown emails get no account.
   const { error } = await supabase.auth.signInWithOtp({
@@ -37,6 +41,6 @@ export async function sendLink(_prev: LoginState, formData: FormData): Promise<L
   // Same answer whether or not the email has access, so the form never reveals who is invited.
   return {
     status: 'sent',
-    message: `If ${email} has access, a sign-in link is on its way. Open it on this device.`,
+    message: `If ${email} has access, a sign-in link is on its way. You can open it on any device.`,
   };
 }
