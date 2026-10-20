@@ -381,19 +381,96 @@ That's the end of BaseCamp. If you're hired, it's also the start of a five-year 
   (24, 8, 'homework', $md$Homework$md$, $md$Your seven whys and your response to your own Prompt 0 answer, ready for the panel.$md$, $md$$md$),
   (24, 9, 'huddle', $md$Huddle$md$, $md$Share the one moment from BaseCamp that changed how you coach.$md$, $md$$md$),
   (24, 10, 'lesson', $md$Reading$md$, $md$Your Prompt 0 answer, one more time before the panel.$md$, $md$$md$),
-  (24, 11, 'huddle', $md$The Instructor gate$md$, $md$Your gate conversation with Morrill, Tommy, Dustin, Christy, and Jonathan. Read what it scores.$md$, $md$A working draft until the Instructor rubric is finished. Each row is scored 1 (unsafe or absent) to 5 (an example for others). To pass: no row below 3, the safety row at 3 or better with zero flags, and sign-off from the leadership panel. A safety flag or a values concern is enough on its own to mean not yet.
+  (24, 11, 'huddle', $md$The Instructor gate$md$, $md$Your gate conversation with Morrill, Tommy, Dustin, Christy, and Jonathan. Read what it scores.$md$, $md$The Instructor gate is the hiring decision. It asks one question: can you teach movement to the person in front of you, see and correct what matters, tailor how you say it to who you're talking to, run a full session on your own, and leave a complete record behind you, consistently?
 
-- **Teaching.** Gate session film (3 or better)
-- **Seeing and correcting.** Gate session film (3 or better, cues land)
-- **Tailoring.** Gate session film and the archetype drill (3 or better, delivery changes by person)
-- **Managing the room.** Gate session film (3 or better, every member reached, close never cut)
-- **Safety.** Gate session film and floor record (3 or better, zero flags)
-- **Operational trail.** Unprompted records check (Complete, specific, same day)
-- **Discovery calls.** Final call evaluation and Lead Connector logs (Signed off, including logging)
-- **Certification.** Records (CF-L1 or NASM-CPT complete, speaking workshop teach-back delivered)
-- **Teach-back.** Staff huddle (Delivered)
-- **Personal practice.** Training log and HSN tracking (Current)
-- **Values.** Mentor and every senior coach worked with (No concerns)
-- **The panel.** Kolbe and PI discussion, the seven whys, Prompt 0 and now (A clear fit for the path)
+**The evidence.** A full solo session, filmed and scored in a live room. The archetype drill: the same correction coached to two very different members. An unprompted records check of your session notes, Semi-Private Pro logs, discovery-call logs, and Slack posts. Your Week 23 discovery-call evaluation. Your scored film and your mentor's notes from Weeks 13 to 23. And attestations from your mentor and every senior coach you've worked with.
 
-Outcome: hired into Coach I, and My Path opens. Or not yet, with a written plan and a date to re-gate. Or parting well, with an honest conversation and help with what comes next.$md$);
+**Who scores it.** The leadership panel: Morrill, Tommy, Dustin, Christy, and Jonathan.
+
+**The scale.** Every row is scored 1 to 5, and every score points to something observed.
+
+- **1:** unsafe or absent.
+- **2:** present but scripted. You know what to say, not yet why or how to adjust.
+- **3:** competent and reliable. This is the Instructor standard and the hiring bar.
+- **4:** adaptive in real time. Already showing Trainer-level skill.
+- **5:** an example other coaches should watch.
+
+**To pass.** No row below 3, with zero safety flags. A strong average can't make up for a gap: a safety flag, a values concern, or an empty records trail means not yet on its own. A coach who coaches beautifully and logs nothing isn't at hiring standard. Steady 3s with an upward trend are a stronger hire than a mix of 4s and a 2.
+
+### 1. Teaching
+
+- **2:** Delivers the plan accurately but from script. Explanations fall apart when a member asks a follow-up question.
+- **3:** Teaches new movements with tell, show, do. Explains the purpose of each block and movement in plain language, and opens the session with purpose, process, and payoff.
+- **4:** Chooses how to teach based on who's in the room, and checks understanding instead of assuming it.
+
+### 2. Seeing
+
+- **2:** Spots obvious faults, usually late. Doesn't separate what they saw from what they assume it means.
+- **3:** Reliably sees the two or three most common faults in every foundational pattern, in real time, across a full room. Separates the notice from the judgment and reads each member's state against their normal.
+- **4:** Sees faults before they show up under load, and notices what members don't say.
+
+### 3. Correcting
+
+- **2:** Cues are inconsistent in timing or effect. Over-cues, or repeats the same cue louder.
+- **3:** Picks the one fault that matters most, chooses a cue type that fits, prefers external cues, stops at three, and confirms it landed. When it doesn't land, changes the cue.
+- **4:** Corrections are short, well timed, and often invisible.
+
+### 4. Tailoring
+
+- **2:** Coaches everyone the same way, usually in their own style.
+- **3:** Uses the quick read (Driver, Energizer, Rock, Analyst) and the member's state to change how a correction is delivered. In the archetype drill, the same standard is coached two clearly different ways and lands for both. Can explain why, and would be comfortable if the member heard the reasoning.
+- **4:** Draws on the deep read, what a member is protecting, and adjusts as a member's state changes mid-session.
+
+### 5. Managing the room
+
+- **2:** Loses time at transitions, or some members go untouched.
+- **3:** Runs a full session solo for up to twelve members: on time, clean transitions, the close never cut, scaling offered as a plan, and every member reached by name. Handles a late arrival or an equipment problem without stopping the room.
+- **4:** Reads and steers the energy of the whole room, and finds the quiet member first.
+
+### 6. Safety and scope
+
+- **2:** Safe while supervised. Occasionally freelances or hesitates on a hand-off.
+- **3:** Zero safety flags. Every rep inside the plan or the scaling menu, pain and anything outside the lane handed up immediately, the floor set and reset to standard.
+- **4:** Anticipates risk before it shows up.
+
+A safety flag means not yet, whatever else scores.
+
+### 7. Operational trail
+
+- **2:** Records have gaps, arrive late, or are too vague to help.
+- **3:** A session note for every coached segment, same day and specific. Semi-Private Pro logged, every discovery call logged in Lead Connector, Slack posts on time with the self-review first. All without being asked.
+- **4:** Notes predict what the next coach will need.
+
+An empty or unreliable trail means not yet.
+
+### 8. Discovery calls
+
+- **2:** Follows the structure but rushes the why, talks too much, or forgets the next step or the logging.
+- **3:** Runs the full call alone: the frame, the why drawn out, the member's agenda running it, a fitting next step booked, and logged the same day.
+- **4:** Calls feel like coaching, and people who aren't a fit leave helped.
+
+### 9. Applying feedback
+
+- **2:** Accepts feedback but changes slowly, or explains instead of adjusting.
+- **3:** A correction given early in the week shows up on the floor or on film within a couple of days, consistently. This is the strongest hiring signal we have.
+- **4:** Asks for feedback before it's offered.
+
+### 10. Certification
+
+- **3:** CF-L1 attended or NASM-CPT passed. CF-L2 attended in Week 23 or booked for the nearest date. The speaking workshop done and its teach-back delivered. CPR/AED current.
+
+### 11. Personal practice
+
+- **3:** Trains consistently, tracks the six pillars in the HSN app, and can talk honestly about their own habits. The standard is congruence, not appearance.
+
+### 12. Values and professional standard
+
+- **3:** On time, prepared, dressed, team first, members belong to the house, and no concerns from anyone you've worked beside.
+
+A values concern means not yet, whatever else scores.
+
+### The panel conversation
+
+After the rows are scored, you sit down with the panel. This part isn't scored. You'll talk through your Kolbe and PI results (used to understand how you work best, never as pass or fail), your seven whys (purpose, vision, mission, values, principles, outcomes, and coaching personality), your Prompt 0 answer next to the one you'd give today, and the first thing you'll work on as a Trainer.
+
+**Outcomes.** Pass: you're hired into Coach I, and My Path opens. Not yet: a written plan for each row below 3 and a date to re-gate. Or parting well: an honest conversation and real help with what comes next.$md$);
