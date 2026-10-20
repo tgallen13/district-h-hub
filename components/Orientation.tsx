@@ -1,6 +1,7 @@
 import { toggleModule } from '@/app/basecamp/actions';
 import { createClient } from '@/lib/supabase/server';
 import type { Module } from '@/lib/basecamp';
+import Lesson from './Lesson';
 
 export default async function Orientation({ userId }: { userId: string }) {
   const supabase = await createClient();
@@ -24,7 +25,12 @@ export default async function Orientation({ userId }: { userId: string }) {
             <div className="grow">
               <span className="t">{m.title}</span>
               {m.summary ? <span className="sub">{m.summary}</span> : null}
-              {m.body ? <p className="sub" style={{ whiteSpace: 'pre-wrap', color: 'var(--ink)' }}>{m.body}</p> : null}
+              {m.body ? (
+                <details className="reader">
+                  <summary>Read this section</summary>
+                  <Lesson text={m.body} />
+                </details>
+              ) : null}
               {m.video_url ? (
                 <a href={m.video_url} target="_blank" rel="noopener noreferrer" className="sub" style={{ color: 'var(--blue)' }}>Watch the video</a>
               ) : null}
