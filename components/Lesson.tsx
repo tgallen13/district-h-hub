@@ -1,13 +1,28 @@
 import type { ReactNode } from 'react';
 
 // Renders a lesson written in a small subset of Markdown: paragraphs,
-// "### " subheads, "- " bullets, "1. " numbered lists, **bold** and *italic*.
+// "### " subheads, "- " bullets, "1. " numbered lists, **bold**, *italic* and
+// [links](https://...) (http and https only, opened in a new tab).
 // Everything becomes React text nodes, so nothing in a lesson can inject HTML.
 
-function inline(text: string): ReactNode[] {
+const LINK = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/;
+
+function inline(text: string, k = 0): ReactNode[] {
+  const m = LINK.exec(text);
+  if (m) {
+    return [
+      ...emphasis(text.slice(0, m.index), k),
+      <a key={`l${k}`} href={m[2]} target="_blank" rel="noopener noreferrer">{emphasis(m[1], k + 1000)}</a>,
+      ...inline(text.slice(m.index + m[0].length), k + 1),
+    ];
+  }
+  return emphasis(text, k);
+}
+
+function emphasis(text: string, base = 0): ReactNode[] {
   const out: ReactNode[] = [];
   let rest = text;
-  let key = 0;
+  let key = base * 100;
   while (rest.length) {
     const b = rest.indexOf('**');
     const i = rest.indexOf('*');

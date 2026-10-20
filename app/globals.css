@@ -141,3 +141,4 @@ details.quiz > summary::-webkit-details-marker { display: none; }
 .quiz-flag { margin: 0; padding: 10px 12px; border-radius: 8px; background: #FFF1DE; color: #6B3A00; font-size: 14px; }
 .quiz-answer { margin: 0; white-space: pre-wrap; color: var(--ink); font-size: 14px; line-height: 1.5; }
 .quiz-note { margin: 0; padding: 10px 12px; border-radius: 8px; background: var(--accent-tint); color: var(--accent-ink); font-size: 14px; line-height: 1.5; }
+.lesson a { color: var(--blue); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
