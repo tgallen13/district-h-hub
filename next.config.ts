@@ -4,6 +4,9 @@ import type { NextConfig } from 'next';
 // per request instead of using Cache Components' prerendered shells.
 const nextConfig: NextConfig = {
   cacheComponents: false,
+  outputFileTracingIncludes: {
+    '/setup/migrate': ['./supabase/migrations/**'],
+  },
   async headers() {
     return [{ source: '/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] }];
   },
