@@ -4,6 +4,7 @@ BaseCamp and coach development for District H Strength & Fitness, live at
 **basecamp.districthsf.com**.
 
 Next.js on Vercel, with Supabase for email-link sign-in and the database.
+Every push to `main` deploys to production automatically.
 
 ## What's in version one
 
