@@ -3,6 +3,7 @@
 import { headers } from 'next/headers';
 import { createClient } from '@/lib/supabase/server';
 import { adminEmails } from '@/lib/env';
+import { isEmail } from '@/lib/validate';
 
 export type LoginState = { status: 'idle' | 'sent' | 'error'; message: string };
 
@@ -15,7 +16,7 @@ async function siteOrigin(): Promise<string> {
 
 export async function sendLink(_prev: LoginState, formData: FormData): Promise<LoginState> {
   const email = String(formData.get('email') ?? '').trim().toLowerCase();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!isEmail(email)) {
     return { status: 'error', message: 'That email doesn’t look right. Check it and try again.' };
   }
 

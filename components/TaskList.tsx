@@ -1,5 +1,6 @@
 import { submitTask, toggleTask } from '@/app/basecamp/actions';
 import { NEEDS_SUBMISSION, type Progress, type Task } from '@/lib/basecamp';
+import { isHttpUrl } from '@/lib/validate';
 
 const LABELS: Record<Task['kind'], { open: string; hint: string }> = {
   lesson: { open: 'Mark done', hint: 'Daily lesson' },
@@ -9,7 +10,7 @@ const LABELS: Record<Task['kind'], { open: string; hint: string }> = {
 };
 
 function isLink(s: string) {
-  return /^https?:\/\/\S+$/i.test(s);
+  return isHttpUrl(s) && !s.trim().includes(' ');
 }
 
 // editable: the intern's open week. Otherwise it's a read-only record

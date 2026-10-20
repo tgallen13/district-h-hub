@@ -5,6 +5,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { createAdminClient, createClient } from '@/lib/supabase/server';
 import { requireRole, type Role } from '@/lib/auth';
+import { isEmail, isHttpUrl } from '@/lib/validate';
 
 const ROLES: Role[] = ['admin', 'coach', 'intern', 'candidate'];
 const KINDS = ['lesson', 'film', 'homework', 'huddle'];
@@ -24,7 +25,7 @@ export async function addPerson(formData: FormData) {
   const email = clean(formData.get('email'), 320).toLowerCase();
   const fullName = clean(formData.get('full_name'), 200);
   const role = String(formData.get('role')) as Role;
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !ROLES.includes(role)) redirect('/admin?e=input');
+  if (!isEmail(email) || !ROLES.includes(role)) redirect('/admin?e=input');
 
   const admin = createAdminClient();
   const h = await headers();
@@ -143,7 +144,7 @@ export async function saveModule(formData: FormData) {
     title: clean(formData.get('title'), 200) || 'Untitled',
     summary: clean(formData.get('summary'), 300),
     body: clean(formData.get('body'), 8000),
-    video_url: /^https?:\/\//i.test(video) ? video : '',
+    video_url: isHttpUrl(video) ? video : '',
     sort: Number(formData.get('sort')) || 0,
   };
   const supabase = await createClient();
