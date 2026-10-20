@@ -69,7 +69,12 @@ export async function updatePerson(formData: FormData) {
   const supabase = await createClient();
   await supabase
     .from('profiles')
-    .update({ role, full_name: clean(formData.get('full_name'), 200), location: location(formData.get('location')) })
+    .update({
+      role,
+      full_name: clean(formData.get('full_name'), 200),
+      location: location(formData.get('location')),
+      path_access: formData.get('path_access') === 'on',
+    })
     .eq('id', id);
   revalidatePath('/admin');
   redirect('/admin?ok=saved');
@@ -162,4 +167,54 @@ export async function deleteModule(formData: FormData) {
   await supabase.from('orientation_modules').delete().eq('id', String(formData.get('id')));
   revalidatePath('/admin/orientation');
   redirect('/admin/orientation?ok=deleted');
+}
+
+// My Path (Trainer and Coach units) ------------------------------------------
+
+export async function savePathUnit(formData: FormData) {
+  await requireRole(['admin']);
+  const n = Number(formData.get('n'));
+  const supabase = await createClient();
+  await supabase
+    .from('path_units')
+    .update({
+      title: clean(formData.get('title'), 200) || `Unit ${n}`,
+      focus: clean(formData.get('system_focus'), 300),
+      summary: clean(formData.get('summary'), 4000),
+      reading: clean(formData.get('reading'), 300),
+      is_gate: formData.get('is_gate') === 'on',
+      updated_at: new Date().toISOString(),
+    })
+    .eq('n', n);
+  revalidatePath('/admin/path');
+  redirect(`/admin/path/${n}?ok=week`);
+}
+
+export async function savePathTask(formData: FormData) {
+  await requireRole(['admin']);
+  const n = Number(formData.get('week_n'));
+  const id = String(formData.get('id') ?? '');
+  const kind = String(formData.get('kind'));
+  const row = {
+    unit_n: n,
+    kind: KINDS.includes(kind) ? kind : 'lesson',
+    title: clean(formData.get('title'), 200) || 'Untitled',
+    details: clean(formData.get('details'), 4000),
+    body: clean(formData.get('body'), 40000),
+    sort: Number(formData.get('sort')) || 0,
+  };
+  const supabase = await createClient();
+  if (id) await supabase.from('path_tasks').update(row).eq('id', id);
+  else await supabase.from('path_tasks').insert(row);
+  revalidatePath(`/admin/path/${n}`);
+  redirect(`/admin/path/${n}?ok=task`);
+}
+
+export async function deletePathTask(formData: FormData) {
+  await requireRole(['admin']);
+  const n = Number(formData.get('week_n'));
+  const supabase = await createClient();
+  await supabase.from('path_tasks').delete().eq('id', String(formData.get('id')));
+  revalidatePath(`/admin/path/${n}`);
+  redirect(`/admin/path/${n}?ok=deleted`);
 }

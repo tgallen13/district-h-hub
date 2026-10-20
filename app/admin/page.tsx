@@ -103,6 +103,10 @@ export default async function People({ searchParams }: { searchParams: Promise<{
                   <label htmlFor={`l-${p.id}`}>Location</label>
                   <LocSelect id={`l-${p.id}`} value={p.location} />
                 </div>
+                <label className="sub" style={{ flex: '1 1 100%', display: 'flex', gap: 8, alignItems: 'center', color: 'var(--ink)' }}>
+                  <input type="checkbox" name="path_access" defaultChecked={p.path_access} />
+                  Open My Path without BaseCamp (for coaches hired before BaseCamp existed)
+                </label>
                 <button className="btn blue" type="submit" style={{ flex: '0 0 auto' }}>Save</button>
               </form>
               {p.id !== me.id ? (

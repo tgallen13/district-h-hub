@@ -8,13 +8,17 @@ function navFor(profile: Profile): NavItem[] {
   switch (profile.role) {
     case 'admin':
       return [
-        { href: '/coach', label: 'Interns' },
+        { href: '/coach', label: 'Development' },
         { href: '/admin', label: 'People' },
-        { href: '/admin/weeks', label: 'Curriculum' },
+        { href: '/admin/weeks', label: 'BaseCamp weeks' },
+        { href: '/admin/path', label: 'My Path units' },
         { href: '/admin/orientation', label: 'Orientation' },
       ];
     case 'coach':
-      return [{ href: '/coach', label: 'Interns' }];
+      return [
+        { href: '/path', label: 'My Path' },
+        { href: '/coach', label: 'Development' },
+      ];
     case 'intern':
       return [
         { href: '/basecamp', label: 'My week' },

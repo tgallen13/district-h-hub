@@ -1,4 +1,3 @@
-import { submitTask, toggleTask } from '@/app/basecamp/actions';
 import { NEEDS_SUBMISSION, type Progress, type Task } from '@/lib/basecamp';
 import { isHttpUrl } from '@/lib/validate';
 import Lesson from './Lesson';
@@ -16,8 +15,22 @@ function isLink(s: string) {
 
 // editable: the intern's open week. Otherwise it's a read-only record
 // (past weeks for the intern, or a coach reviewing).
-export default function TaskList({ tasks, progress, editable }: { tasks: Task[]; progress: Map<string, Progress>; editable: boolean }) {
-  if (!tasks.length) return <p className="sub">No work has been added to this week yet.</p>;
+type Action = (formData: FormData) => Promise<void>;
+
+export default function TaskList({
+  tasks,
+  progress,
+  editable,
+  toggle,
+  submit,
+}: {
+  tasks: Task[];
+  progress: Map<string, Progress>;
+  editable: boolean;
+  toggle?: Action;
+  submit?: Action;
+}) {
+  if (!tasks.length) return <p className="sub">No work has been added here yet.</p>;
   return (
     <div>
       {tasks.map((t) => {
@@ -49,7 +62,7 @@ export default function TaskList({ tasks, progress, editable }: { tasks: Task[];
                 <summary className={`btn${p ? ' done' : ''}`} style={{ listStyle: 'none', display: 'inline-flex' }}>
                   {p ? 'Submitted · edit' : LABELS[t.kind].open}
                 </summary>
-                <form action={submitTask} className="stack" style={{ marginTop: 12, gap: 10 }}>
+                <form action={submit} className="stack" style={{ marginTop: 12, gap: 10 }}>
                   <input type="hidden" name="taskId" value={t.id} />
                   <label htmlFor={`s-${t.id}`} className="sub" style={{ fontWeight: 600 }}>
                     {t.kind === 'film' ? 'Link to your filmed rep' : 'Your homework'}
@@ -66,7 +79,7 @@ export default function TaskList({ tasks, progress, editable }: { tasks: Task[];
                 </form>
               </details>
             ) : (
-              <form action={toggleTask}>
+              <form action={toggle}>
                 <input type="hidden" name="taskId" value={t.id} />
                 <input type="hidden" name="done" value={p ? '1' : '0'} />
                 <button className={`btn${p ? ' done' : ''}`} type="submit" aria-pressed={!!p}>

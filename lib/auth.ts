@@ -11,6 +11,7 @@ export type Profile = {
   full_name: string;
   role: Role;
   location: 'heights' | 'oak_forest' | null;
+  path_access: boolean;
   created_at: string;
 };
 
@@ -40,7 +41,7 @@ export const getViewer = cache(async (): Promise<{ userId: string; email: string
 
 export function homeFor(role: Role): string {
   if (role === 'admin') return '/admin';
-  if (role === 'coach') return '/coach';
+  if (role === 'coach') return '/path';
   return '/basecamp';
 }
 

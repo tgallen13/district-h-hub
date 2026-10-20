@@ -59,6 +59,11 @@ export default async function InternDetail({
         <Link href="/coach" className="sub">&larr; All interns</Link>
         <h1 className="h1">{p.full_name || p.email}</h1>
         <p className="lede">{done ? 'Finished all 24 weeks.' : `On week ${open} of ${TOTAL_WEEKS}.`}</p>
+        {done && me.role === 'admin' ? (
+          <div className="note">
+            BaseCamp is complete. When you hire them, change their role to Coach on the <Link href="/admin">People</Link> page and My Path opens for them.
+          </div>
+        ) : null}
       </div>
       {e === 'signoff' ? <div className="warn" role="alert">That sign-off didn&rsquo;t save. Someone may have signed off this week already. Refresh and check.</div> : null}
 
