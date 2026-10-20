@@ -13,11 +13,13 @@ function navFor(profile: Profile): NavItem[] {
         { href: '/admin/weeks', label: 'BaseCamp weeks' },
         { href: '/admin/path', label: 'My Path units' },
         { href: '/admin/orientation', label: 'Orientation' },
+        { href: '/playbooks', label: 'Playbooks' },
       ];
     case 'coach':
       return [
         { href: '/path', label: 'My Path' },
         { href: '/coach', label: 'Development' },
+        { href: '/playbooks', label: 'Playbooks' },
       ];
     case 'intern':
       return [
