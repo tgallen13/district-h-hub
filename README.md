@@ -37,7 +37,7 @@ intern ahead, and nobody can change their own role. `npm run test:db` checks
 4. **Sign-in links.** In Supabase, go to Authentication, then URL
    Configuration. Set Site URL to `https://basecamp.districthsf.com` and add
    `https://basecamp.districthsf.com/auth/confirm` to Redirect URLs.
-5. **Email templates** need no changes. Sign-in links use Supabase's implicit
+5. **Email links** need no template changes to work. Sign-in links use Supabase's implicit
    flow, so the default emails work in any browser, including a phone's mail
    app (`/auth/confirm` reads the session from the link; `/auth/callback`
    handles `token_hash` and PKCE links if templates are customized later).
@@ -45,9 +45,13 @@ intern ahead, and nobody can change their own role. `npm run test:db` checks
    turn off "Allow new users to sign up". The hub creates logins only through
    admin invites and `ADMIN_EMAILS`.
 
-Supabase's built-in email sender is rate limited and meant for testing. Before
-inviting a full cohort, connect a real sender (Resend, Postmark, or Google
-Workspace SMTP) under Authentication, then SMTP Settings.
+7. **Email sender.** Auth emails go out through Resend from
+   `basecamp@districthsf.com` (Authentication, then Emails, then SMTP Settings:
+   host `smtp.resend.com`, port 465, user `resend`, password is the Resend API
+   key). The email rate limit is 100 an hour, matching Resend's free daily cap.
+8. **Branded emails.** The HTML for the sign-in, invite, and confirm emails
+   lives in `supabase/templates/`. Paste a changed file into the matching
+   template under Authentication, then Emails, then Templates.
 
 ## Working on it
 
