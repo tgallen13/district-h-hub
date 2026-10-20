@@ -119,7 +119,7 @@ They measure different things.
 
 **PI Behavioral** looks at your behavioral drives: how much you like to lead or support, how much you want variety or steadiness, how much you lean toward people or toward the task.
 
-At the gate panel, Morrill and leadership will talk through your results with you. The purpose is to understand you better: how you'll work best on our team, what kind of support helps you, and where your natural style will make the work easier or harder. A coach whose drives pull toward fast action might need help slowing down for notes. A coach who loves structure might need practice with sessions that go off-plan.
+At the gate, the leadership panel will talk through your results with you. The purpose is to understand you better: how you'll work best on our team, what kind of support helps you, and where your natural style will make the work easier or harder. A coach whose drives pull toward fast action might need help slowing down for notes. A coach who loves structure might need practice with sessions that go off-plan.
 
 Take them honestly. There's no right profile to aim for, and trying to answer the way you think a coach should only makes the conversation less useful.
 
@@ -283,9 +283,10 @@ One more thing to prepare this week. At the panel, you'll look back at the Promp
   (23, 7, 'film', $md$Filmed rep$md$, $md$Your evaluated discovery call, plus the film clip you'll use in your teach-back.$md$, $md$$md$),
   (23, 8, 'homework', $md$Homework$md$, $md$Your self-assessment against the Instructor rubric, and your Prompt 13 answer with evidence.$md$, $md$$md$),
   (23, 9, 'huddle', $md$Huddle$md$, $md$Your teach-back. You lead the full staff huddle on a topic from your strongest film moment.$md$, $md$$md$),
-  (23, 10, 'lesson', $md$Reading$md$, $md$Conscious Coaching, plus your Prompt 0 answer before the gate.$md$, $md$$md$);
+  (23, 10, 'lesson', $md$Reading$md$, $md$Conscious Coaching, plus your Prompt 0 answer before the gate.$md$, $md$$md$),
+  (23, 11, 'lesson', $md$Certification: CF-L2$md$, $md$Attend your CrossFit Level 2 course this week (or the closest available date). Its group-coaching assessment is good preparation for the Instructor gate. Bring the takeaways to a huddle within 30 days.$md$, $md$$md$);
 
-update public.weeks set title = $md$The Instructor gate$md$, summary = $md$This is the last week of BaseCamp. You'll run a full solo session on film with the complete records trail behind it, run the archetype drill one more time, get signed off on discovery calls, and sit down with Morrill and leadership for the panel. The Instructor gate is the hiring decision.$md$, system_focus = $md$The complete operational trail, reviewed without warning after your gate session: session notes, Semi-Private Pro logs, follow-ups, and call logs.$md$, updated_at = now() where n = 24;
+update public.weeks set title = $md$The Instructor gate$md$, summary = $md$This is the last week of BaseCamp. You'll run a full solo session on film with the complete records trail behind it, run the archetype drill one more time, get signed off on discovery calls, and sit down with the leadership panel: Morrill, Tommy, Dustin, Christy, and Jonathan. The Instructor gate is the hiring decision.$md$, system_focus = $md$The complete operational trail, reviewed without warning after your gate session: session notes, Semi-Private Pro logs, follow-ups, and call logs.$md$, updated_at = now() where n = 24;
 insert into public.tasks (week_n, sort, kind, title, details, body) values
   (24, 1, 'lesson', $md$Monday: What the Instructor gate decides$md$, $md$On the floor today: Read the plan for your gate session and pull every booked member's notes and program, the way you will on the day.$md$, $md$The Presenter gate asked whether you could carry a room. The Instructor gate asks something bigger: would we trust you to coach our members, on your own, as a member of this team?
 
@@ -297,7 +298,7 @@ It answers that with four kinds of evidence.
 
 **The archetype drill and the call sign-off.** The same correction to two different members, and a discovery call that's run well and logged completely.
 
-**The panel.** A conversation with Morrill and leadership about who you are as a coach and where you're headed.
+**The panel.** A conversation with the leadership panel about who you are as a coach and where you're headed.
 
 The rubric runs from 1 to 5, the same as before. To pass, no row is below 3 and the safety row has zero flags. A safety concern or a values concern is enough on its own to mean not yet.
 
@@ -325,7 +326,7 @@ If something goes sideways mid-session, handle it the way you were taught. The r
 **On the floor today:** Run today's session as a full dress rehearsal, including the end-of-day routine, and time how long the trail takes.
 
 **Check yourself:** If your gate session were today, what would the trail check find?$md$),
-  (24, 3, 'lesson', $md$Wednesday: The panel$md$, $md$On the floor today: Write one or two sentences for each of the seven whys, using something from your BaseCamp experience as evidence for each.$md$, $md$The panel is a conversation with Morrill and leadership. It's less about your coaching skills, which the session and the drill already show, and more about who you are as a coach and whether this is the right place and path for you.
+  (24, 3, 'lesson', $md$Wednesday: The panel$md$, $md$On the floor today: Write one or two sentences for each of the seven whys, using something from your BaseCamp experience as evidence for each.$md$, $md$The panel is a conversation with the leadership team: Morrill, Tommy, Dustin, Christy, and Jonathan. It's less about your coaching skills, which the session and the drill already show, and more about who you are as a coach and whether this is the right place and path for you.
 
 Expect three parts.
 
@@ -380,7 +381,7 @@ That's the end of BaseCamp. If you're hired, it's also the start of a five-year 
   (24, 8, 'homework', $md$Homework$md$, $md$Your seven whys and your response to your own Prompt 0 answer, ready for the panel.$md$, $md$$md$),
   (24, 9, 'huddle', $md$Huddle$md$, $md$Share the one moment from BaseCamp that changed how you coach.$md$, $md$$md$),
   (24, 10, 'lesson', $md$Reading$md$, $md$Your Prompt 0 answer, one more time before the panel.$md$, $md$$md$),
-  (24, 11, 'huddle', $md$The Instructor gate$md$, $md$Your gate conversation with Morrill and leadership. Read what it scores.$md$, $md$A working draft until the Instructor rubric is finished. Each row is scored 1 (unsafe or absent) to 5 (an example for others). To pass: no row below 3, the safety row at 3 or better with zero flags, and sign-off from Morrill and leadership. A safety flag or a values concern is enough on its own to mean not yet.
+  (24, 11, 'huddle', $md$The Instructor gate$md$, $md$Your gate conversation with Morrill, Tommy, Dustin, Christy, and Jonathan. Read what it scores.$md$, $md$A working draft until the Instructor rubric is finished. Each row is scored 1 (unsafe or absent) to 5 (an example for others). To pass: no row below 3, the safety row at 3 or better with zero flags, and sign-off from the leadership panel. A safety flag or a values concern is enough on its own to mean not yet.
 
 - **Teaching.** Gate session film (3 or better)
 - **Seeing and correcting.** Gate session film (3 or better, cues land)

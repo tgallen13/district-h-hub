@@ -158,11 +158,11 @@ Your demo also teaches without words. Members watch how you move between sets, h
 **Check yourself:** Did your demo today match the version your members actually did?$md$),
   (14, 5, 'lesson', $md$Friday: The archetype map$md$, $md$On the floor today: Fill in the map for five members you coach this week: quick read, likely drive, and which kind of trust matters most to them.$md$, $md$At this week's huddle, the cohort builds the District H archetype map together, using the people-reading map and *Conscious Coaching*.
 
-The map has two layers. The **quick read** takes about 30 seconds. Is this person fast-paced or deliberate? Do they lead with the task or with how they feel? That gives you four quadrants: Drivers, who want the headline, the standard, and the scoreboard; Expressives, who want enthusiasm, variety, and an audience of one; Analytics, who want the reason, the data, and time to process; and Amiables, who want warmth, patience, and no public spotlight. The quadrant tells you how to package a cue.
+The map has two layers. The **quick read** takes about 30 seconds. Is this person fast-paced or deliberate? Do they lead with the task or with how they feel? That gives you four quadrants: Drivers, who want the headline, the standard, and the scoreboard; Energizers, who want enthusiasm, variety, and an audience of one; Analysts, who want the reason, the data, and time to process; and Rocks, who want warmth, patience, and no public spotlight. The quadrant tells you how to package a cue.
 
 The **deep read** takes months. What is this person protecting? The skeptic who must not be fooled, the achiever who must not fall behind, the anxious beginner who must not be embarrassed, the veteran who must not be condescended to. That's what *Conscious Coaching* calls their drives, and it tells you what to build for their year, not just how to say Tuesday's cue.
 
-The huddle adds a third column: which kind of trust each type values most. Our starting guesses are that Analytics are won with credibility, Amiables read intent, Expressives bond through commonality, and Drivers respect propriety and economy. You'll test these against real members, and the map gets better every time a cohort builds it.
+The huddle adds a third column: which kind of trust each type values most. Our starting guesses are that Analysts are won with credibility, Rocks read intent, Energizers bond through commonality, and Drivers respect propriety and economy. You'll test these against real members, and the map gets better every time a cohort builds it.
 
 Two rules hold the whole thing together. Types are hypotheses, not verdicts. And read to serve, never to manipulate. Would you be comfortable if the member heard your reasoning?
 
@@ -268,13 +268,13 @@ insert into public.tasks (week_n, sort, kind, title, details, body) values
 
 What stays the same is the movement standard. Both members need a tall chest. What changes is everything else in the Floor Loop: what you noticed about each person, how you read them, what you chose, and how you delivered it.
 
-For an Analytic, you might give the reason first: "When your chest drops, the bar pulls you forward and your back takes the load. Keep it tall and your legs do the work." Then one clear cue and time to try it.
+For an Analyst, you might give the reason first: "When your chest drops, the bar pulls you forward and your back takes the load. Keep it tall and your legs do the work." Then one clear cue and time to try it.
 
-For an Amiable, you might skip the explanation, come in quietly between sets, and use a spatial cue: "Try keeping your eyes on that mark on the wall. Nice. That's it."
+For a Rock, you might skip the explanation, come in quietly between sets, and use a spatial cue: "Try keeping your eyes on that mark on the wall. Nice. That's it."
 
 For a Driver, the headline and the standard: "Chest up. Next set, every rep."
 
-For an Expressive, energy and a little audience of one: "That last rep was your best one. Do that chest again."
+For an Energizer, energy and a little audience of one: "That last rep was your best one. Do that chest again."
 
 None of these is better than the others. Each one fits a person. That's the whole idea of the Instructor phase.
 
@@ -288,7 +288,7 @@ Reading has two parts. **State** is about today. Are they energetic, tired, dist
 A few honest cautions about reading people:
 
 - **Your first read is a guess.** Hold it loosely and update it when they surprise you.
-- **State can hide type.** A bad week can make anyone look like an Amiable. Don't reclassify someone on one session.
+- **State can hide type.** A bad week can make anyone look like a Rock. Don't reclassify someone on one session.
 - **Your own type gets in the way.** A coach who is a Driver tends to coach everyone like a Driver. Knowing your own default helps you notice when you're doing it.
 
 The question that makes reading useful is always: what does this person need from me right now to get better at this? Not what's the label, but what's the need.
