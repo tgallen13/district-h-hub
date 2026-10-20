@@ -116,6 +116,7 @@ export async function saveTask(formData: FormData) {
     kind: KINDS.includes(kind) ? kind : 'lesson',
     title: clean(formData.get('title'), 200) || 'Untitled',
     details: clean(formData.get('details'), 4000),
+    body: clean(formData.get('body'), 40000),
     sort: Number(formData.get('sort')) || 0,
   };
   const supabase = await createClient();

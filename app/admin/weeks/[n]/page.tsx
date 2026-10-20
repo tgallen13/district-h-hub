@@ -45,6 +45,10 @@ function TaskFields({ t, n, nextSort }: { t?: Task; n: number; nextSort: number 
         <label htmlFor={`d-${key}`}>Instructions for the intern</label>
         <textarea id={`d-${key}`} name="details" className="textarea" defaultValue={t?.details ?? ''} placeholder="What to read, watch, or do. Paste links here too." />
       </div>
+      <div className="field">
+        <label htmlFor={`b-${key}`}>Full lesson (optional)</label>
+        <textarea id={`b-${key}`} name="body" className="textarea" style={{ minHeight: 220 }} defaultValue={t?.body ?? ''} placeholder="The reading interns open from this item. Blank line between paragraphs. Start a line with - for a bullet, ### for a subhead, and wrap words in ** for bold." />
+      </div>
     </>
   );
 }

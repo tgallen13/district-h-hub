@@ -1,6 +1,7 @@
 import { submitTask, toggleTask } from '@/app/basecamp/actions';
 import { NEEDS_SUBMISSION, type Progress, type Task } from '@/lib/basecamp';
 import { isHttpUrl } from '@/lib/validate';
+import Lesson from './Lesson';
 
 const LABELS: Record<Task['kind'], { open: string; hint: string }> = {
   lesson: { open: 'Mark done', hint: 'Daily lesson' },
@@ -27,6 +28,12 @@ export default function TaskList({ tasks, progress, editable }: { tasks: Task[];
             <div className="grow">
               <span className="t">{t.title}</span>
               <span className="sub">{t.details || LABELS[t.kind].hint}</span>
+              {t.body ? (
+                <details className="reader">
+                  <summary>{t.kind === 'lesson' ? 'Read the lesson' : 'Read more'}</summary>
+                  <Lesson text={t.body} />
+                </details>
+              ) : null}
               {needsText && p?.submission ? (
                 isLink(p.submission) ? (
                   <a href={p.submission} target="_blank" rel="noopener noreferrer" className="sub" style={{ color: 'var(--blue)', wordBreak: 'break-all' }}>{p.submission}</a>
