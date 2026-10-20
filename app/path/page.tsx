@@ -65,7 +65,7 @@ export default async function MyPath({ searchParams }: { searchParams: Promise<{
             <h2 style={{ fontWeight: 800, fontSize: 28 }}>{u?.title}</h2>
             {u?.focus ? <div style={{ fontSize: 15 }}><strong>Focus:</strong> {u.focus}</div> : null}
             {u?.summary ? <p className="sub" style={{ fontSize: 15, whiteSpace: 'pre-wrap' }}>{u.summary}</p> : null}
-            {u?.reading ? <div style={{ fontSize: 15 }}><strong>Reading:</strong> {u.reading}</div> : null}
+            {u?.reading ? <div style={{ fontSize: 15 }}><strong>Reading:</strong> {u.reading.replaceAll('*', '')}</div> : null}
             {signoff ? (
               <div className="stack" style={{ gap: 6 }}>
                 <span className="badge">Signed off {new Date(signoff.signed_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
